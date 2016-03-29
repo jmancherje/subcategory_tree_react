@@ -4,10 +4,14 @@ import { tree } from '../tree'
 
 export default class App extends Component {
   render() {
+    const categories = tree.map((category, i) => 
+      <Category category={category.value} children={category.children} dashes={0} key={i} />
+    )
+
     return (
-      <div>
-        <Category category={tree.value} children={tree.children} dashes={0} />
-      </div>
+      <ul>
+        {categories}
+      </ul>
     )
   }
 }

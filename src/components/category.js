@@ -10,16 +10,7 @@ class Category extends Component {
   }
 
   renderSubcategories() {
-    console.log('this', this)
     this.setState({showChildren: true})
-  }
-
-  showDashes() {
-    let dashes = ''
-    for (var i=0; i<this.props.dashes; i++) {
-      dashes += ' - '
-    }
-    return dashes
   }
 
   render() {
@@ -28,12 +19,15 @@ class Category extends Component {
     )
 
     return (
-      <div>
-        <h4 onClick={() => this.setState({showChildren: !this.state.showChildren})} >{this.showDashes()}{this.props.category}</h4>
-        <div>
+      <li>
+        <h4 onClick={() => this.setState({showChildren: !this.state.showChildren})} >
+          {this.props.category}
+        </h4>
+
+        <ul>
           {this.state.showChildren ? subcategories : ''}
-        </div>
-      </div>
+        </ul>
+      </li>
     )
   }
 }
